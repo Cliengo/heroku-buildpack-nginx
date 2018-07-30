@@ -4,10 +4,10 @@
 set -e
 
 # config
-#NGINX_VERSION="1.6.0"
-#S3_BUCKET="devmynd-github"
-NGINX_VERSION="1.15.2"
-S3_BUCKET="nginx-builds"
+NGINX_VERSION="1.6.0"
+S3_BUCKET="devmynd-github"
+#NGINX_VERSION="1.15.2"
+#S3_BUCKET="nginx-builds"
 
 # parse and derive params
 BUILD_DIR=$1
@@ -41,6 +41,6 @@ fi
 mkdir -p logs
 touch logs/access.log logs/error.log
 (tail -qF -n 0 --pid=\$\$ logs/*.log &)
-exec bin/nginx -p=.
+exec bin/nginx -p .
 EOF
 chmod +x "$BUILD_DIR/bin/start_nginx"
