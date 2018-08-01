@@ -28,10 +28,8 @@ echo "-----> Vendoring nginx $NGINX_VERSION"
 mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NGINX/nginx/sbin/nginx" "$BUILD_DIR/bin/nginx"
 
-echo "-----> Creating folders"
-#mkdir -p /var/lib/nginx
-#mkdir -p /var/lib/nginx/body
-#mkdir -p /var/lib/nginx/fastcgi
+echo "-----> Creating folders $BUILD_DIR/client_body_temp"
+mkdir -p "$BUILD_DIR/client_body_temp"
 
 # build a startup script
 cat <<EOF >"$BUILD_DIR/bin/start_nginx"
