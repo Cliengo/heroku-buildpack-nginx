@@ -6,7 +6,7 @@ set -e
 # config
 #NGINX_VERSION="1.6.0"
 #S3_BUCKET="devmynd-github"
-NGINX_VERSION="1.15.2"
+NGINX_VERSION="1.15.2.a"
 S3_BUCKET="nginx-builds"
 
 # parse and derive params
