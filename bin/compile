@@ -29,7 +29,7 @@ mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NGINX/nginx/sbin/nginx" "$BUILD_DIR/bin/nginx"
 
 echo "-----> Creating folders $BUILD_DIR/client_body_temp"
-mkdir -p "$BUILD_DIR/client_body_temp"
+mkdir -p "$BUILD_DIR/nginx/client_body_temporal"
 
 # build a startup script
 cat <<EOF >"$BUILD_DIR/bin/start_nginx"
@@ -42,6 +42,7 @@ if [ -f conf/site.htpasswd.erb ];
     erb conf/site.htpasswd.erb > conf/site.htpasswd
 fi
 mkdir -p logs
+mkdir -p client_body_temporal
 touch logs/access.log logs/error.log
 (tail -qF -n 0 --pid=\$\$ logs/*.log &)
 exec bin/nginx -p . -c conf/nginx.conf
